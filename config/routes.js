@@ -34,7 +34,9 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+
+  'GET /jucespciesp/:id': 'JucespciespController.scrap'
 
   /***************************************************************************
   *                                                                          *

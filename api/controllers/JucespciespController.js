@@ -9,10 +9,10 @@ var request = require('request');
 var cheerio = require('cheerio');
 
 module.exports = {
-	put: function(req, res) {
+	scrap: function(req, res) {
 
 		req.body = req.body || {};
-		req.body.process_number = req.body.process_number || "0543484154";
+		req.body.process_number = req.body.process_number || req.query.p || req.params.id || "0543484154";
 
 		var model = {
 			process_number: req.body.process_number
@@ -22,8 +22,11 @@ module.exports = {
 			$ = cheerio.load(result.body);
 			var statusText = $("#jucesp").text().toLowerCase();
 
-			if (statusText.indexOf('deferido')) {
+			if (statusText.indexOf('deferido') > 0) {
 				model.status = 'deferido';
+			}
+			else if (statusText.indexOf('processo não localizado') > 0) {
+				model.status = 'not_found';
 			}
 
 			res.json(model);
