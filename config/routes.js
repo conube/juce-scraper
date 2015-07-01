@@ -36,7 +36,8 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  'GET /jucespciesp/:id': 'JucespciespController.scrap'
+  'GET /jucespciesp/:id': 'JucespciespController.scrap',
+  'GET /jucesp/:id': 'JucespController.scrap'
 
   /***************************************************************************
   *                                                                          *

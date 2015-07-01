@@ -23,12 +23,15 @@ module.exports = {
 			var statusText = $("#jucesp").text().toLowerCase();
 
 			if (statusText.indexOf('deferido') > 0) {
-				model.status = 'deferido';
+				model.status = 'approved';
 			}
-			else if (statusText.indexOf('processo não localizado') > 0) {
+			else if (statusText.indexOf('com exigência') > 0) {
+				model.status = 'rejected';
+			}
+			else {
 				model.status = 'not_found';
 			}
-
+			
 			res.json(model);
 		});
 
