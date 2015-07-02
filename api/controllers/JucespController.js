@@ -31,6 +31,7 @@ module.exports = {
 		request.get('https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero='+number+'&ano='+year+'&digito='+digit, function(err, result){
 			$ = cheerio.load(result.body);
 			var statusText = $("#resposta tr:last-child td:first-child").text().toLowerCase();
+			console.log('statusText', statusText, statusText.length, statusText === '', statusText === ' ', statusText === '&nbsp', statusText === " ");
 
 			model.content = statusText;
 			model.test = ('https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero='+number+'&ano='+year+'&digito='+digit);
@@ -43,7 +44,7 @@ module.exports = {
 				model.status = 'rejected';
 				// https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero=0540885&ano=15&digito=0
 			}
-			else if (statusText == ' ') {
+			else if (statusText.length === 1) {
 				model.status = 'empty';
 				// https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero=053534&ano=15&digito=3
 			}
