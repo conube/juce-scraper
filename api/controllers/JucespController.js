@@ -45,10 +45,10 @@ module.exports = {
 				// https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero=0540885&ano=15&digito=0
 			}
 			else if (statusText.length === 1) {
-				model.status = 'empty';
+			model.status = 'waiting';
 				// https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero=053534&ano=15&digito=3
 			}
-			else {
+			else {	
 				model.status = 'not_found';
 				// https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero=0540889&ano=15&digito=0
 			}
