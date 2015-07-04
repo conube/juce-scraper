@@ -2,6 +2,9 @@
  * JUCEES Scraper
  *
  * https://www.jucesp.sp.gov.br/eprotocolo2.asp
+ *
+ * EM EXIGENCIA - https://www.jucees.es.gov.br/consulta/processo.php?nrproc=140440879
+ * EM TRAMITACAO - https://www.jucees.es.gov.br/consulta/processo.php?nrproc=140031740
  */
 
 var
@@ -32,16 +35,13 @@ module.exports = {
 
       if (status.indexOf('aprovado') >= 0) {
         return response.approved(processNumber, url);
-      } else if (status.indexOf('nao existe') >= 0) {
-        return response.notFound(processNumber, url);
-      } else {
+      } else if (status.first.indexOf('em tramitacao') >= 0) {
+        return response.waiting(processNumber, url);
+      } else if (status.first.indexOf('em exigencia') >= 0) {
         return response.rejected(processNumber, url);
+      } else {
+        return response.notFound(processNumber, url);
       }
-
-      // TEMOS QUE PROGRAMAR
-      //  else if (status.indexOf('aguarde') >= 0) {
-      //   return response.waiting(processNumber, url);
-      // }
 
     });
   }
