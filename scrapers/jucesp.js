@@ -1,7 +1,8 @@
 /**
  * JUCESP Scraper
  *
- * https://www.jucesp.sp.gov.br/eprotocolo2.asp
+ * @description Scraper for junta comercial of São Paulo
+ *              https://www.jucesp.sp.gov.br
  */
 
 var

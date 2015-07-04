@@ -1,7 +1,8 @@
 /**
  * JUCERJA Scraper
  *
- * https://www.jucesp.sp.gov.br/eprotocolo2.asp
+ * @description Scraper for junta comercial of Rio de Janeiro
+ *              https://www.jucerja.rj.gov.br
  */
 
 var

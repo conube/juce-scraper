@@ -1,7 +1,9 @@
 /**
  * CIESP Scraper
  *
- * http://www.jucespciesp.com.br/jucesp.asp
+ * @description Scraper for junta comercial of São Paulo inside of CIESP
+ *              https://www.jucespciesp.com.br
+ *
  */
 
 var

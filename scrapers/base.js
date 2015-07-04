@@ -1,4 +1,11 @@
-module.exports = {
+/**
+ * Base scraper module
+ *
+ * @description Base functions to build a scraper
+ *
+ */
+
+ module.exports = {
 
   response: function(status, processNumber, url) {
     return {

@@ -1,7 +1,8 @@
 /**
- * JUCEES Scraper
+ * JUCESP Scraper
  *
- * https://www.jucesp.sp.gov.br/eprotocolo2.asp
+ * @description Scraper for junta comercial of Espirito Santo
+ *              https://www.jucees.es.gov.br
  *
  * EM EXIGENCIA - https://www.jucees.es.gov.br/consulta/processo.php?nrproc=140440879
  * EM TRAMITACAO - https://www.jucees.es.gov.br/consulta/processo.php?nrproc=140031740
