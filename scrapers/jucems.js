@@ -4,9 +4,9 @@
  * @description Scraper for junta comercial of Mato Grosso do Sul
  *              https://jucems.ms.gov.br
  *
- * TRAMITACAO - https://servicos.jucems.ms.gov.br/scripts/consulta.exe/posicao?nrproc=140045511
- * EXIGENCIA - https://servicos.jucems.ms.gov.br/scripts/consulta.exe/posicao?nrproc=140045902
- * APROVADO - https://servicos.jucems.ms.gov.br/scripts/consulta.exe/posicao?nrproc=140045821
+ * approved - https://servicos.jucems.ms.gov.br/scripts/consulta.exe/posicao?nrproc=140045821
+ * rejected - https://servicos.jucems.ms.gov.br/scripts/consulta.exe/posicao?nrproc=140045902
+ * waiting - https://servicos.jucems.ms.gov.br/scripts/consulta.exe/posicao?nrproc=140045511
  */
 
 var
