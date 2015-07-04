@@ -20,6 +20,10 @@ http://juce-scraper.herokuapp.com/ciesp/0543484154
 
 http://juce-scraper.herokuapp.com/jucees/147802802
 
+http://juce-scraper.herokuapp.com/jucees/140029613
+
+http://juce-scraper.herokuapp.com/jucees/140440879
+
 ### Rio de Janeiro (JUCERJA)
 
 http://juce-scraper.herokuapp.com/jucerja/0020152061630
