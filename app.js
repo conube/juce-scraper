@@ -70,6 +70,7 @@ var jsonResponse = function(response, data) {
   response.end();
 };
 
+// flag for open ssl
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 server.listen(process.env.PORT || 9080);

@@ -33,7 +33,7 @@ module.exports = {
       if (status.indexOf('aprovado') >= 0) {
         return response.approved(processNumber, url);
       } else if (status.indexOf('nao existe') >= 0) {
-        return response.notFound(processNumber, status);
+        return response.notFound(processNumber, url);
       } else {
         return response.rejected(processNumber, url);
       }
