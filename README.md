@@ -1,3 +1,4 @@
-# juce-scraper
+juce-scraper
+============
 
-a [Sails](http://sailsjs.org) application
+Micro service REST API to look up the status of a process on the Junta Comercial (Board of Trade)

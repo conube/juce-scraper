@@ -1,59 +1,71 @@
 /**
- * app.js
- *
- * Use `app.js` to run your app without `sails lift`.
- * To start the server, run: `node app.js`.
- *
- * This is handy in situations where the sails CLI is not relevant or useful.
- *
- * For example:
- *   => `node app.js`
- *   => `forever start app.js`
- *   => `node debug app.js`
- *   => `modulus deploy`
- *   => `heroku scale`
+ * Main server API application
  *
  *
- * The same command-line arguments are supported, e.g.:
- * `node app.js --silent --port=80 --prod`
  */
 
-// Ensure we're in the project directory, so relative paths work as expected
-// no matter where we actually lift from.
-process.chdir(__dirname);
+var
+  url = require('url'),
+  http = require('http'),
+  fs = require('fs'),
+  Promise = require('bluebird');
 
-// Ensure a "sails" can be located:
-(function() {
-  var sails;
-  try {
-    sails = require('sails');
-  } catch (e) {
-    console.error('To run an app using `node app.js`, you usually need to have a version of `sails` installed in the same directory as your app.');
-    console.error('To do that, run `npm install sails`');
-    console.error('');
-    console.error('Alternatively, if you have sails installed globally (i.e. you did `npm install -g sails`), you can use `sails lift`.');
-    console.error('When you run `sails lift`, your app will still use a local `./node_modules/sails` dependency if it exists,');
-    console.error('but if it doesn\'t, the app will run with the global sails instead!');
-    return;
-  }
+Promise.promisifyAll(fs);
 
-  // Try to get `rc` dependency
-  var rc;
-  try {
-    rc = require('rc');
-  } catch (e0) {
-    try {
-      rc = require('sails/node_modules/rc');
-    } catch (e1) {
-      console.error('Could not find dependency: `rc`.');
-      console.error('Your `.sailsrc` file(s) will be ignored.');
-      console.error('To resolve this, run:');
-      console.error('npm install rc --save');
-      rc = function () { return {}; };
+var server = http.createServer(
+
+  function(request, response) {
+
+    if (request.method == 'GET'
+        && request.url !== '/'
+        && request.url !== '/favicon.ico') {
+
+      var path = url.parse(request.url, true).pathname;
+      var parts = path.substring(1, path.length).split('/');
+
+      var scrapperName = parts[0];
+      var firstParam = parts[1];
+
+      var modulePath = './scrapers/' + scrapperName + '.js';
+
+      // try find scraper module based on the url
+      var findModule = fs.statAsync(modulePath);
+
+      findModule.then(function() {
+        // load module
+        var scraperModule = require(modulePath);
+        
+        // create promise for scrap
+        var scraperPromise = scraperModule.scrap(firstParam);
+
+        scraperPromise.then(function(data) {
+          jsonResponse(response, data);
+        });
+
+      }).catch(function() {
+        // scraper module not found
+        notFoundResponse(response);
+      });
+
+    } else {
+      notFoundResponse(response);
     }
   }
 
+);
 
-  // Start server
-  sails.lift(rc('sails'));
-})();
+var notFoundResponse = function(response) {
+  response.writeHead(404);
+  response.end();
+};
+
+var jsonResponse = function(response, data) {
+  response.writeHead(200, {
+    'Content-Type': 'application/json'
+  });
+
+  response.write(JSON.stringify(data));
+  response.end();
+};
+
+server.listen(process.env.PORT || 9080);
