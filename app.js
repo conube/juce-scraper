@@ -70,4 +70,6 @@ var jsonResponse = function(response, data) {
   response.end();
 };
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 server.listen(process.env.PORT || 9080);
