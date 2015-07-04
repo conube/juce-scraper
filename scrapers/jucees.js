@@ -1,5 +1,5 @@
 /**
- * JUCESP Scraper
+ * JUCEES Scraper
  *
  * @description Scraper for junta comercial of Espirito Santo
  *              https://www.jucees.es.gov.br
