@@ -29,11 +29,11 @@ Run with AZK
 
 1.	Install AZK
 
-http://docs.azk.io/en/installation
+	http://docs.azk.io/en/installation
 
-1.	Run the application
+2.	Run the application
 
-`azk start`
+	`azk start`
 
 Run without AZK
 ---------------
