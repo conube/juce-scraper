@@ -34,7 +34,7 @@ var server = http.createServer(
       findModule.then(function() {
         // load module
         var scraperModule = require(modulePath);
-        
+
         // create promise for scrap
         var scraperPromise = scraperModule.scrap(firstParam);
 
@@ -42,8 +42,10 @@ var server = http.createServer(
           jsonResponse(response, data);
         });
 
-      }).catch(function() {
-        // scraper module not found
+      }).catch(function(err) {
+        // scraper load module error
+        console.error(scrapperName, 'load module error', err);
+
         notFoundResponse(response);
       });
 
