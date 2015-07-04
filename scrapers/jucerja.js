@@ -37,13 +37,10 @@ module.exports = {
 
       if (status.second.indexOf('deferido') >= 0) {
         return response.approved(processNumber, url);
-        // https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero=0536492&ano=15&digito=3
       } else if (status.second.indexOf('exig') >= 0) {
         return response.rejected(processNumber, url);
-        // https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero=0540885&ano=15&digito=0
       } else if (status.first.indexOf('aguarde') >= 0) {
         return response.waiting(processNumber, url);
-        // https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero=053534&ano=15&digito=3
       }
 
       return response.notFound(processNumber, url);
