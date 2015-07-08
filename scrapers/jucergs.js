@@ -1,5 +1,5 @@
 /**
- * JUCEMG Scraper
+ * JUCERGS Scraper
  *
  * @description Scraper for junta comercial of Rio Grande do Sul
  *              http://www.jucergs.rs.gov.br

@@ -1,7 +1,7 @@
 /**
- * JUCEMG Scraper
+ * JUCEG Scraper
  *
- * @description Scraper for junta comercial of Para
+ * @description Scraper for junta comercial of Goias
  *              http://servicos.juceg.go.gov.br/
  */
 
