@@ -8,11 +8,16 @@
  module.exports = {
 
   response: function(status, processNumber, url) {
-    return {
+    var m = {
       processNumber: processNumber,
-      status: status,
-      url: url
+      status: status
     };
+
+    if (url !== undefined) {
+      m.url = url;
+    }
+
+    return m;
   },
 
   approved: function(processNumber, url) {

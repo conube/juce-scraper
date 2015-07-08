@@ -1,8 +1,13 @@
 /**
- * JUCEMG Scraper
+ * JUCEG Scraper
  *
+<<<<<<< HEAD
  * @description Scraper for junta comercial of Goiás
  *              http://servicos.juceg.go.gov.br/andamento-processo/
+=======
+ * @description Scraper for junta comercial of Goias
+ *              http://servicos.juceg.go.gov.br/
+>>>>>>> 24897d70bd47078d2d08dbe25042e6e21c3bdd8d
  */
 
 var
