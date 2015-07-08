@@ -1,8 +1,8 @@
 /**
  * JUCEMG Scraper
  *
- * @description Scraper for junta comercial of Minas Gerais
- *              http://www.jucemg.mg.gov.br/
+ * @description Scraper for junta comercial of Ceara
+ *              http://vpn2.jucec.ce.gov.br/
  */
 
 var
@@ -17,7 +17,7 @@ module.exports = {
   scrap: function(processNumber) {
 
     // url of the request
-    var url = 'http://vpn2.jucec.ce.gov.br/cdp/cdp.php';
+    var url = 'http://vpn2.jucec.ce.gov.br/cdp/cdpmostra.php';
 
     // split number to use on url
     var number = processNumber.substring(2, processNumber.length - 1);
@@ -32,14 +32,14 @@ module.exports = {
 
       $ = cheerio.load(result[0].body);
 
-      return $('.p_viab .situacao').text().toLowerCase();
+      return $('table table tr:first-of-type').next().find('td:nth-child(2) font b').text().toLowerCase();
 
     });
 
     // send response
     return postStatusP.then(function (statusText) {
 
-      if (statusText.indexOf('deferida') >= 0) {
+      if (statusText.indexOf('aprovado') >= 0) {
         return response.approved(processNumber, url);
         // https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero=0536492&ano=15&digito=3
       } else if (statusText.indexOf('exigencia') >= 0) {
