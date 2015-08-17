@@ -22,8 +22,9 @@ var server = http.createServer(
 
       var path = url.parse(request.url, true).pathname;
       var parts = path.substring(1, path.length).split('/');
+      console.log('parts', parts);
 
-      var scrapperName = parts[0];
+      var scrapperName = parts[0].toLowerCase();
       var firstParam = parts[1];
 
       var modulePath = './scrapers/' + scrapperName + '.js';
