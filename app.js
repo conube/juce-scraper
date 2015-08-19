@@ -16,83 +16,54 @@ var server = http.createServer(
 
   function(request, response) {
 
-    if (request.method == 'POST'
-        && request.url !== '/'
-        && request.url !== '/favicon.ico') {
-
-      var path = url.parse(request.url, true).pathname;
-      var parts = path.substring(1, path.length).split('/');
-      console.log('parts', parts);
-
-      var scrapperName = parts[0].toLowerCase();
-      var firstParam = parts[1];
-
-      var modulePath = './scrapers/' + scrapperName + '.js';
-
-      // try find scraper module based on the url
-      var findModule = fs.statAsync(modulePath);
-
-      findModule.then(function() {
-        // load module
-        var scraperModule = require(modulePath);
-
-        // create promise for scrap
-        var scraperPromise = scraperModule.scrap(firstParam);
-
-        scraperPromise.then(function(data) {
-          jsonResponse(response, data);
-        });
-
-      }).catch(function(err) {
-        // scraper load module error
-        console.error(scrapperName, 'load module error', err);
-
-        notFoundResponse(response);
-      });
-
-    }else if (request.method == 'GET'
-        && request.url !== '/'
-        && request.url !== '/favicon.ico') {
-
-
-      var path = url.parse(request.url, true).pathname;
-      var parts = path.substring(1, path.length).split('/');
-
-      var scrapperName = parts[0];
-      var firstParam = parts[1];
-
-      var modulePath = './scrapers/' + scrapperName + '.js';
-
-      // try find scraper module based on the url
-      var findModule = fs.statAsync(modulePath);
-
-      findModule.then(function() {
-        // load module
-        var scraperModule = require(modulePath);
-
-        // create promise for scrap
-        var scraperPromise = scraperModule.scrap(firstParam);
-
-        scraperPromise.then(function(data) {
-          jsonResponse(response, data);
-        });
-
-      }).catch(function(err) {
-        // scraper load module error
-        console.error(scrapperName, 'load module error', err);
-
-        notFoundResponse(response);
-      });
-
-    } else {
-      notFoundResponse(response);
+    // check if the request is GET
+    if (request.method !== 'GET'
+        || request.url === '/'
+        || request.url === '/favicon.ico') {
+          statusResponse(404, response);
+          return;
     }
+
+    // check if the request contains at least 2 parts to match the /{scraperName}/{protocolNumber}
+    var path = url.parse(request.url, true).pathname;
+    var parts = path.substring(1, path.length).split('/');
+
+    if (parts.length < 2) {
+      statusResponse(400, response);
+      return;
+    }
+
+    var scrapperName = parts[0].toLowerCase(); // to avoid issues
+    var firstParam = parts[1].toLowerCase();
+
+    var modulePath = './scrapers/' + scrapperName + '.js';
+
+    // try find scraper module based on the url
+    var findModule = fs.statAsync(modulePath);
+
+    findModule.then(function() {
+      // load module
+      var scraperModule = require(modulePath);
+
+      // create promise for scrap
+      var scraperPromise = scraperModule.scrap(firstParam);
+
+      scraperPromise.then(function(data) {
+        jsonResponse(response, data);
+      });
+
+    }).catch(function(err) {
+      // scraper load module error
+      console.error(scrapperName, 'load module error', err);
+
+      statusResponse(400, response);
+    });
   }
 
 );
 
-var notFoundResponse = function(response) {
-  response.writeHead(404);
+var statusResponse = function(status, response) {
+  response.writeHead(status);
   response.end();
 };
 
