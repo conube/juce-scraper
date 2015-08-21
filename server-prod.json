@@ -1,0 +1,8 @@
+{
+  "name": "juce-scraper-prod",
+  "script": "app.js",
+  "args": "['--nouse-idle-notification', '--expose-gc']",
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
