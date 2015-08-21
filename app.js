@@ -78,4 +78,7 @@ var jsonResponse = function(response, data) {
 // flag for open ssl
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
-server.listen(process.env.PORT || 9080);
+var port = process.env.PORT || 9080;
+server.listen(port, function() {
+  console.log('server started on port ' + port);
+});
