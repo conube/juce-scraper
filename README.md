@@ -1,32 +1,37 @@
-JUCE-SCRAPPER
-=============
+JUCE Scraper
+============
 
 Micro service REST API to look up the status of a process on the Junta Comercial (Board of Trade).
 
-Samples
--------
+Juntas Comerciais Suportadas
+----------------------------
 
-### São Paulo
+-	[CIESP](https://www.jucespciesp.com.br)
+-	[JUCEC](http://vpn2.jucec.ce.gov.br)
+-	[JUCEES](https://www.jucees.es.gov.br)
+-	[JUCEG](http://servicos.juceg.go.gov.br)
+-	[JUCEMG](http://www.jucemg.mg.gov.br)
+-	[JUCEMS](https://jucems.ms.gov.br)
+-	[JUCEPA](http://www.jucepa.pa.gov.br)
+-	[JUCERGS](http://www.jucergs.rs.gov.br)
+-	[JUCERJA](https://www.jucerja.rj.gov.br)
+-	[JUCESC](http://sistemas2.jucesc.sc.gov.br)
+-	[JUCESE](https://www.jucese.se.gov.br)
+-	[JUCESP](https://www.jucesp.sp.gov.br)
 
-#### JUCESP
+Exemplos de consulta
+--------------------
 
-http://juce-scraper.herokuapp.com/jucesp/0543484154
+#### São Paulo (CIESP / JUCESP)
 
-#### CIESP
+-	[CIESP](http://juce-scraper.herokuapp.com/ciesp/0543484154)
+-	[JUCESP](http://juce-scraper.herokuapp.com/jucesp/0543484154)
 
-http://juce-scraper.herokuapp.com/ciesp/0543484154
+#### Espirito Santo (JUCEES)
 
-### Espirito Santo (JUCEES)
-
-http://juce-scraper.herokuapp.com/jucees/147802802
-
-http://juce-scraper.herokuapp.com/jucees/140029613
-
-http://juce-scraper.herokuapp.com/jucees/140440879
-
-### Rio de Janeiro (JUCERJA)
-
-http://juce-scraper.herokuapp.com/jucerja/0020152061630
+-	[Consulta de aprovado](https://www.jucees.es.gov.br/consulta/processo.php?nrproc=147802806)
+-	[Consulta de reprovado](https://www.jucees.es.gov.br/consulta/processo.php?nrproc=140440879)
+-	[Consulta de aguardando](https://www.jucees.es.gov.br/consulta/processo.php?nrproc=140031740)
 
 Run with AZK
 ------------
