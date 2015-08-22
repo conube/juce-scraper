@@ -3,21 +3,65 @@ JUCE Scraper
 
 Micro service REST API to look up the status of a process on the Junta Comercial (Board of Trade).
 
-Juntas Comerciais Suportadas
-----------------------------
+Juntas Comerciais
+-----------------
 
--	[CIESP](https://www.jucespciesp.com.br)
--	[JUCEC](http://vpn2.jucec.ce.gov.br)
--	[JUCEES](https://www.jucees.es.gov.br)
--	[JUCEG](http://servicos.juceg.go.gov.br)
--	[JUCEMG](http://www.jucemg.mg.gov.br)
--	[JUCEMS](https://jucems.ms.gov.br)
--	[JUCEPA](http://www.jucepa.pa.gov.br)
--	[JUCERGS](http://www.jucergs.rs.gov.br)
--	[JUCERJA](https://www.jucerja.rj.gov.br)
--	[JUCESC](http://sistemas2.jucesc.sc.gov.br)
--	[JUCESE](https://www.jucese.se.gov.br)
--	[JUCESP](https://www.jucesp.sp.gov.br)
+1.	Acre (não suportada)
+
+2.	Alagoas (não suportada)
+
+3.	Amapá (não suportada)
+
+4.	Amazonas (não suportada)
+
+5.	Bahia (não suportada)
+
+6.	[Ceará (JUCEC)](http://vpn2.jucec.ce.gov.br)
+
+7.	[Distrito Federal (JCDF)](http://jcdf.smpe.gov.br)
+
+8.	[Espírito Santo (JUCEES)](https://www.jucees.es.gov.br)
+
+9.	[Goiás (JUCEG)](http://servicos.juceg.go.gov.br)
+
+10.	Maranhão (não suportada)
+
+11.	Mato Grosso (não suportada)
+
+12.	[Mato Grosso do Sul (JUCEMS)](https://jucems.ms.gov.br)
+
+13.	[Minas Gerais (JUCEMG)](http://www.jucemg.mg.gov.br)
+
+14.	[Pará (JUCEPA)](http://www.jucepa.pa.gov.br)
+
+15.	Paraíba (não suportada)
+
+16.	Paraná (não suportada)
+
+17.	Pernambuco (não suportada)
+
+18.	Piauí (não suportada)
+
+19.	Rio Grande do Norte (não suportada)
+
+20.	[Rio Grande do Sul (JUCERGS)](http://www.jucergs.rs.gov.br)
+
+21.	[Rio de Janeiro (JUCERJA)](https://www.jucerja.rj.gov.br)
+
+22.	Rondônia (não suportada)
+
+23.	Roraima (não suportada)
+
+24.	[Santa Catarina](http://sistemas2.jucesc.sc.gov.br)
+
+25.	São Paulo
+
+	-	[JUCESP](https://www.jucesp.sp.gov.br)
+	-	[CIESP](https://www.jucespciesp.com.br)
+
+26.	[Sergipe](https://www.jucese.se.gov.br)
+
+27.	Tocantins (não suportada)
 
 Exemplos de consulta
 --------------------
