@@ -2,7 +2,7 @@
  * JUCEES Scraper
  *
  * @description Scraper for junta comercial of Santa Catarina
- *              http://sistemas2.jucesc.sc.gov.br/
+ *              http://sistemas2.jucesc.sc.gov.br
  */
 
 var

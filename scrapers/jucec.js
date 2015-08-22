@@ -2,7 +2,7 @@
  * JUCEMG Scraper
  *
  * @description Scraper for junta comercial of Ceara
- *              http://vpn2.jucec.ce.gov.br/
+ *              http://vpn2.jucec.ce.gov.br
  */
 
 var

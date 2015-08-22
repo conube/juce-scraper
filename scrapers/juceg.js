@@ -1,13 +1,8 @@
 /**
  * JUCEG Scraper
- *
-<<<<<<< HEAD
- * @description Scraper for junta comercial of Goiás
- *              http://servicos.juceg.go.gov.br/andamento-processo/
-=======
+ * 
  * @description Scraper for junta comercial of Goias
  *              http://servicos.juceg.go.gov.br/
->>>>>>> 24897d70bd47078d2d08dbe25042e6e21c3bdd8d
  */
 
 var
@@ -33,7 +28,7 @@ module.exports = {
     var year = processNumber.substring(0, 2);
     var digit = processNumber.substring(processNumber.length - 1, processNumber.length);
 
-    // ID from 
+    // ID from
     var id;
 
     // request for POST
@@ -69,7 +64,7 @@ module.exports = {
     // request for POST
     var postP = setCook.then(function (cookies) {
       return request.postAsync({
-        url:postUrl, 
+        url:postUrl,
         form:{
           'javax.faces.partial.ajax': 'true',
           'javax.faces.source': 'btnConsularProcesso',
@@ -82,7 +77,7 @@ module.exports = {
         jar: cookies
       });
     })
-    
+
 
     // scrap the status text
     var postStatusP = postP.then(function (result) {
