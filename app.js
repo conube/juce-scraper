@@ -5,9 +5,9 @@
  */
 
 var
-  url = require('url'),
-  http = require('http'),
-  fs = require('fs'),
+  url     = require('url'),
+  http    = require('http'),
+  fs      = require('fs'),
   Promise = require('bluebird');
 
 Promise.promisifyAll(fs);
