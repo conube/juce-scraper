@@ -1,8 +1,8 @@
 /**
  * JUCEG Scraper
- * 
+ *
  * @description Scraper for junta comercial of Goias
- *              http://servicos.juceg.go.gov.br/
+ *              http://servicos.juceg.go.gov.br/andamento-processo/
  */
 
 var
@@ -21,14 +21,14 @@ module.exports = {
     var getUrl = 'http://servicos.juceg.go.gov.br/andamento-processo';
 
     // url for POST
-    var postUrl = 'http://servicos.juceg.go.gov.br/andamento-processo/interface/principal.xhtml';
+    var postUrl = 'http://servicos.juceg.go.gov.br/andamento-processo/interface/pgAndamento.xhtml';
 
     // split number to use on url
     var number = processNumber.substring(2, processNumber.length - 1);
     var year = processNumber.substring(0, 2);
     var digit = processNumber.substring(processNumber.length - 1, processNumber.length);
 
-    // ID from
+    // ID from 
     var id;
 
     // request for POST
@@ -44,12 +44,12 @@ module.exports = {
       // set the ID
       for (var i = idList.length - 1; i >= 0; i--) {
         if ($(idList[i]).val().length >= 35) {
-          id = $(idList[i]).val()
+          id = $(idList[i]).val();
           break;
-        };
-      };
+        }
+      }
       return fullCookie;
-    })
+    });
 
     // set the cookie
     var setCook = getViewState.then(function (fullCookie) {
@@ -59,39 +59,39 @@ module.exports = {
       j.setCookie(fullCookie, getUrl);
 
       return j;
-    })
+    });
 
     // request for POST
     var postP = setCook.then(function (cookies) {
       return request.postAsync({
-        url:postUrl,
+        url:postUrl, 
         form:{
           'javax.faces.partial.ajax': 'true',
           'javax.faces.source': 'btnConsularProcesso',
           'javax.faces.partial.execute': 'btnConsularProcesso nrProtocolo',
-          'javax.faces.partial.render': 'formPrincipal formPrincipal pnBotoes mensagem',
+          'javax.faces.partial.render': 'formPrincipal mensagem',
           btnConsularProcesso: 'btnConsularProcesso',
           formPrincipal: 'formPrincipal',
           nrProtocolo: year + '/' + number + '-' + digit,
           'javax.faces.ViewState': id },
         jar: cookies
       });
-    })
-
+    });
+    
 
     // scrap the status text
     var postStatusP = postP.then(function (result) {
 
-      $ = cheerio.load(result[0].body);
+      $ = cheerio.load(result[0].body.replace(/<!\[CDATA\[([^\]]+)]\]>/ig, "$1"), {xmlMode: true});
 
-      return result[0].body.toLowerCase();
+      return $('.mensagemFinal div span').text().toLowerCase().replace(/\:/g, '');
 
     });
 
     // send response
     return postStatusP.then(function (statusText) {
 
-      if (statusText.indexOf('bt_aprovado') >= 0) {
+      if (statusText.indexOf('disponível') >= 0) {
         return response.approved(processNumber, getUrl);
         // https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero=0536492&ano=15&digito=3
       } else if (statusText.indexOf('bt_exigencia') >= 0) {
