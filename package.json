@@ -7,7 +7,8 @@
   "dependencies": {
     "bluebird": "^2.9.30",
     "cheerio": "^0.19.0",
-    "request": "^2.58.0"
+    "request": "^2.58.0",
+    "tough-cookie": "2.0.0"
   },
   "scripts": {
     "debug": "node debug app.js",
