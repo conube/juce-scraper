@@ -21,7 +21,7 @@ module.exports = {
     var getUrl = 'http://servicos.juceg.go.gov.br/andamento-processo';
 
     // url for POST
-    var postUrl = 'http://servicos.juceg.go.gov.br/andamento-processo/interface/principal.xhtml';
+    var postUrl = 'http://servicos.juceg.go.gov.br/andamento-processo/interface/pgAndamento.xhtml';
 
     // split number to use on url
     var number = processNumber.substring(2, processNumber.length - 1);
@@ -69,7 +69,7 @@ module.exports = {
           'javax.faces.partial.ajax': 'true',
           'javax.faces.source': 'btnConsularProcesso',
           'javax.faces.partial.execute': 'btnConsularProcesso nrProtocolo',
-          'javax.faces.partial.render': 'formPrincipal formPrincipal pnBotoes mensagem',
+          'javax.faces.partial.render': 'formPrincipal mensagem',
           btnConsularProcesso: 'btnConsularProcesso',
           formPrincipal: 'formPrincipal',
           nrProtocolo: year + '/' + number + '-' + digit,
@@ -82,16 +82,16 @@ module.exports = {
     // scrap the status text
     var postStatusP = postP.then(function (result) {
 
-      $ = cheerio.load(result[0].body);
+      $ = cheerio.load(result[0].body.replace(/<!\[CDATA\[([^\]]+)]\]>/ig, "$1"), {xmlMode: true});
 
-      return result[0].body.toLowerCase();
+      return $('.mensagemFinal div span').text().toLowerCase().replace(/\:/g, '');
 
     });
 
     // send response
     return postStatusP.then(function (statusText) {
 
-      if (statusText.indexOf('bt_aprovado') >= 0) {
+      if (statusText.indexOf('disponível') >= 0) {
         return response.approved(processNumber, getUrl);
         // https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero=0536492&ano=15&digito=3
       } else if (statusText.indexOf('bt_exigencia') >= 0) {
