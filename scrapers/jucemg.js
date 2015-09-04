@@ -2,7 +2,7 @@
  * JUCEMG Scraper
  *
  * @description Scraper for junta comercial of Minas Gerais
- *              http://www.jucemg.mg.gov.br/
+ *              http://www.jucemg.mg.gov.br
  */
 
 var

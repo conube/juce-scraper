@@ -3,13 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "description": "",
+  "author": "gblmarquez",
+  "license": "MIT",
   "keywords": [],
-  "dependencies": {
-    "bluebird": "^2.9.30",
-    "cheerio": "^0.19.0",
-    "request": "^2.58.0",
-    "tough-cookie": "2.0.0"
-  },
   "scripts": {
     "debug": "node debug app.js",
     "start": "node app.js"
@@ -19,6 +15,15 @@
     "type": "git",
     "url": "git://github.com/gblmarquez/juce-scraper.git"
   },
-  "author": "gblmarquez",
-  "license": "MIT"
+  "dependencies": {
+    "bluebird": "^2.9.30",
+    "cheerio": "^0.19.0",
+    "request": "^2.58.0",
+    "tough-cookie": "^2.0.0"
+  },
+  "devDependencies": {
+    "shipit-deploy": "^2.0.0",
+    "shipit-npm": "^0.2.0",
+    "shipit-shared": "^4.1.4"
+  }
 }

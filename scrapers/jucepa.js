@@ -2,7 +2,7 @@
  * JUCEPA Scraper
  *
  * @description Scraper for junta comercial of Para
- *              http://www.jucepa.pa.gov.br/
+ *              http://www.jucepa.pa.gov.br
  */
 
 var
