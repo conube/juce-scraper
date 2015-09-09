@@ -40,7 +40,7 @@ module.exports = {
     // send response
     return postStatusP.then(function (statusText) {
 
-      if (statusText.indexOf('deferida') >= 0 || statusText.indexOf('conclu') >= 0) {
+      if (statusText.indexOf('deferida') >= 0 || statusText.indexOf('aprovado') >= 0) {
         return response.approved(processNumber, url);
       } else if (statusText.indexOf('exig') >= 0) {
         return response.rejected(processNumber, url);
