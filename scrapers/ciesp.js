@@ -36,8 +36,10 @@ module.exports = {
 
       if (statusText.indexOf('deferido') > 0) {
         return response.approved(processNumber, url);
-      } else if (statusText.indexOf('com exigência') > 0) {
+      } else if (statusText.indexOf('com exig') > 0) {
         return response.rejected(processNumber, url);
+      } else if (statusText.indexOf('em an') > 0) {
+        return response.waiting(processNumber, url);
       }
 
       return response.notFound(processNumber, url);

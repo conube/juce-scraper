@@ -44,7 +44,7 @@ module.exports = {
       } else if (statusText.indexOf('exigencia') >= 0) {
         return response.rejected(processNumber, url);
         // https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero=0540885&ano=15&digito=0
-      } else if (statusText.length === 1) {
+      } else if (statusText !== null && statusText.length >= 0) {
         return response.waiting(processNumber, url);
         // https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero=053534&ano=15&digito=3
       }
