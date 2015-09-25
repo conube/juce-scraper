@@ -14,7 +14,7 @@ Juntas Comerciais
 
 4.	Amazonas (não suportada)
 
-5.	Bahia (não suportada)
+5.	[Bahia (JUCEB)](https://http://www.juceb.ba.gov.br)
 
 6.	[Ceará (JUCEC)](http://vpn2.jucec.ce.gov.br)
 
