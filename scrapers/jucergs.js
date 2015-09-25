@@ -42,7 +42,6 @@ module.exports = {
       }
 
       return response.notFound(processNumber, url);
-
     });
   }
 };
