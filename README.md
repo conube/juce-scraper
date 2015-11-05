@@ -36,7 +36,7 @@ Juntas Comerciais
 
 15.	Paraíba (não suportada)
 
-16.	Paraná (não suportada)
+16.	[Paraná (JUCPR)] (https://www.empresafacil.pr.gov.br)
 
 17.	Pernambuco (não suportada)
 
