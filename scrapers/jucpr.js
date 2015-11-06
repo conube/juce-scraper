@@ -42,7 +42,6 @@ module.exports = {
       var array = result[0].body.array;
 
       for (var i = array.length - 1; i >= 0; i--) {
-        console.log('item', array[i].status);
 
         if(array[i].status !== undefined){
           if (array[i].label === 'Ato Constitutivo' && array[i].status.enum === 1) {
@@ -54,7 +53,6 @@ module.exports = {
           else if (i === 0) {
             return 'waiting'
           }
-          console.log('item', array[i].status.enum);
         }
       };
 
