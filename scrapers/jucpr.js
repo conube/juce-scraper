@@ -39,23 +39,29 @@ module.exports = {
     // scrap the status text
     var postStatusP = postP.then(function (result) {
 
+      console.log('teste', result[0].body.array);
+
       var array = result[0].body.array;
 
-      for (var i = array.length - 1; i >= 0; i--) {
+      if (array === undefined) {
+        return 'not found';
+      }
+      else{
+        for (var i = array.length - 1; i >= 0; i--) {
 
-        if(array[i].status !== undefined){
-          if (array[i].label === 'Ato Constitutivo' && array[i].status.enum === 1) {
-            return 'approved';
+          if(array[i].status !== undefined){
+            if (array[i].label === 'Ato Constitutivo' && array[i].status.enum === 1) {
+              return 'approved';
+            }
+            else if (array[i].status.enum === 3 ) {
+              return 'exigency';
+            }
+            else if (i === 0) {
+              return 'waiting';
+            }
           }
-          else if (array[i].status.enum === 3 ) {
-            return 'exigency'
-          }
-          else if (i === 0) {
-            return 'waiting'
-          }
-        }
+        }; 
       };
-
     });
 
     // send response
