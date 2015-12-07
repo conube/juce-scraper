@@ -38,11 +38,11 @@ module.exports = {
     // send response
     return getStatusP.then(function (statusText) {
 
-      if (statusText.indexOf('deferido') >= 0) {
-        return response.approved(processNumber, url);
-        // https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero=0536492&ano=15&digito=3
-      } else if (statusText.indexOf('exigencia') >= 0) {
+      if (statusText.indexOf('exigencia') >= 0 || statusText.indexOf('indeferido') >= 0) {
         return response.rejected(processNumber, url);
+        // https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero=0536492&ano=15&digito=3
+      } else if (statusText.indexOf('deferido') >= 0) {
+        return response.approved(processNumber, url);
         // https://www.jucesp.sp.gov.br/eprotocolo2.asp?numero=0540885&ano=15&digito=0
       } else if (statusText !== null && statusText.length >= 0) {
         return response.waiting(processNumber, url);
