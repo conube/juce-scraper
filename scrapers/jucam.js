@@ -1,7 +1,7 @@
 /**
- * JUCPR Scraper
+ * JUCAM Scraper
  *
- * @description Scraper for junta comercial of Parana
+ * @description Scraper for junta comercial of Amazonas
  *              https://www.empresasuperfacil.am.gov.br
  */
 
